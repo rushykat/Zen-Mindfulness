@@ -1,0 +1,18 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: antiquewhite;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.item {
+    
+}
+
+img {
+    width: 500px;
+}
