@@ -48,8 +48,6 @@ ul {
     }
 }
 
-
-
 @media (min-width: 1200px) {
     .container {
         width: 1140px;
@@ -92,10 +90,6 @@ ul {
 .about__img {
     display: block;
     width: 35%;
-}
-
-li {
-    
 }
 
 .header__title {
