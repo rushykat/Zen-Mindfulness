@@ -94,8 +94,17 @@ ul {
     width: 35%;
 }
 
-.description {}
+li {
+    
+}
 
 .header__title {
+    text-align: center;
+}
+
+footer {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: lightblue;
     text-align: center;
 }
