@@ -392,3 +392,41 @@ footer {
         }
     }
 }
+
+
+.stats__title {
+    margin-bottom: 20px;
+}
+
+.stats__tabs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.stats__tabs-label {
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.stats__tabs-radio {
+    display: none;
+}
+
+.stats__tabs-content {
+    order: 1;
+    width: 100%;
+    border-bottom: 3px solid #dddddd;
+    line-height: 1.5;
+    font-size: 0.9em;
+    display: none;
+}
+
+.stats__tabs-radio:checked+.stats__tabs-label {
+    font-weight: bold;
+    color: #009578;
+    border-bottom: 2px solid #009578;
+}
+
+.stats__tabs-radio:checked+.stats__tabs-label+.stats__tabs-content {
+    display: initial;
+}

@@ -11,7 +11,7 @@
     <title>Zen Mental Health App</title>
 </head>
 
-<body class="intro__body">
+<body>
     <header class="header">
         <div class="container">
             <div class="header__wrapper">
@@ -24,27 +24,30 @@
             </div>
         </div>
     </header>
-    <div class="form-structor">
-        <div class="signup">
-            <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
-            <div class="form-holder">
-                <input type="text" class="input" placeholder="Name" />
-                <input type="email" class="input" placeholder="Email" />
-                <input type="password" class="input" placeholder="Password" />
-            </div>
-            <button class="submit-btn">Sign up</button>
-        </div>
-        <div class="login slide-up">
-            <div class="center">
-                <h2 class="form-title" id="login"><span>or</span>Log in</h2>
-                <div class="form-holder">
-                    <input type="email" class="input" placeholder="Email" />
-                    <input type="password" class="input" placeholder="Password" />
+    <main>
+        <section class="stats">
+            <div class="container stats__container">
+                <h2 class="stats__title">Your Stats</h2>
+                <div class="stats__tabs">
+                    <input type="radio" class="stats__tabs-radio" name="tabs-example" id="tab1" checked>
+                    <label for="tab1" class="stats__tabs-label">Tab #1</label>
+                    <div class="stats__tabs-content">
+                        CONTENT for Tab #1
+                    </div>
+                    <input type="radio" class="stats__tabs-radio" name="tabs-example" id="tab2">
+                    <label for="tab2" class="stats__tabs-label">Tab #2</label>
+                    <div class="stats__tabs-content">
+                        CONTENT for Tab #2
+                    </div>
                 </div>
-                <button class="submit-btn">Log in</button>
             </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Zen Mental Health App</p>
         </div>
-    </div>
+    </footer>
 </body>
-                      
+
 </html>
