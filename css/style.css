@@ -433,3 +433,43 @@ footer {
 .stats__tabs-radio:checked+.stats__tabs-label+.stats__tabs-content {
     display: initial;
 }
+
+
+
+
+body.test-page {
+    font-family: Arial, sans-serif;
+    margin-top: 80px;
+    padding: 0;
+}
+
+body.test-page h1 {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+body.test-page form#quiz {
+    width: 80%;
+    margin: 20px auto;
+}
+
+body.test-page .question {
+    margin-bottom: 20px;
+}
+
+body.test-page input[type="submit"] {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+body.test-page input[type="submit"]:hover {
+    background-color: #0056b3;
+}
