@@ -115,19 +115,22 @@ ul {
 }
 
 .card {
+    background-color: #c9e9e8;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 15px;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
+
+
+
 
 footer {
     background-color: #f8f9fa;
     color: #212529;
     text-align: left;
     padding: 20px;
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
