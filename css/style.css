@@ -16,9 +16,12 @@ html {
 body {
     font-size: 16px;
     color: black;
-    font-family: "Fira Sans", Helvetica, Arial, sans-serif;
-    margin-top: 100px;
-    
+    font-family: "Fira Sans", Helvetica, Arial, sans-serif;   
+}
+
+#background-img {
+    max-width: 100%;
+    margin-bottom: 10px;
 }
 
 .intro__body {
