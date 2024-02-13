@@ -19,11 +19,29 @@ body {
     font-family: "Fira Sans", Helvetica, Arial, sans-serif;   
 }
 
-#background-img {
-    max-width: 100%;
-    margin-bottom: 10px;
+.about {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin-bottom: 50px;
+    background-image: url("../img/scenery.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
+#background-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+#title {
+    font-size: 36px;
+    position: absolute;
+    color: #fff;
+    top: 20%;
+    left: 50%;
+    z-index: 20;
+}
 .intro__body {
     position: relative;
     min-height: 100vh;
@@ -50,11 +68,21 @@ ul {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
+.card {
+    width: 48%;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
 @media (min-width: 576px) {
     .container {
         width: 540px;
@@ -79,10 +107,7 @@ ul {
     }
 }
 
-#title {
-    color: #fff;
-    margin-left: 300px;
-}
+
 .header {
     background-color: rgba(68, 112, 173, 0.6);
     padding: 10px 0;
