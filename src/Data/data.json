@@ -1,0 +1,7 @@
+[
+    {"Question":"Question 1: How do you prefer to spend your free time?", "A":"A. Reading a book", "B":"B. Hanging out with friends", "C":"C. Going on an adventure", "name":"q1"}, 
+    {"Question":"Question 2: What is your favorite type of movie?", "A":"A. Comedy", "B":"B. Drama", "C":"C. Action", "name":"q2"},
+    {"Question":"Question 3: Which of these words best describes you?", "A":"A. Outgoing", "B":"B. Quiet", "C":"C. Fun-loving", "name":"q3"},
+    {"Question":"Question 4: If you could have one superpower, what would it be?", "A":"A. Invisibility", "B":"B. Super strength", "C":"C. Time travel", "name":"q4"},
+    {"Question":"Question 5: What is your favorite type of music?", "A":"A. Pop", "B":"B. Rock", "C":"C. Classical", "name":"q5"}
+]
