@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useState } from 'react';
 import DATA from '../Data/data.json';
 import Header from "./Header";
 import Footer from "./Footer";
-import DATA from '../Data/data.json';
-import React, { useState } from 'react';
 import success from '../img/success.png';
 
 
