@@ -99,14 +99,12 @@ function Footer() {
 export default function App() {
   return (
     <Router>
-      <Header />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<><Header /><Main /><Footer /></>} />
         <Route path="/test" element={<TestPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/user" element={<UserPage />} />
       </Routes>
-      
     </Router>
   );
 }

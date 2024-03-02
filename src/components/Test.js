@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 export default function TestPage() {
     return (
         <div>
-            {/* <Header /> */}
+            <Header />
             <Body />
-            {/* <Footer /> */}
+            <Footer />
         </div>
     )
 }
@@ -48,25 +48,29 @@ function Header() {
   );
 }
 
-function Footer() {
-    return (
-      <footer className="footer">
-        <div className="container">
-          <p>&copy; 2024 Zen Mental Health App Group 10</p>
-        </div>
+function Footer (){
+  return (
+      <footer className="footer footer__user">
+          <div className="container">
+              <p>&copy; 2024 Zen Mental Health App</p>
+          </div>
       </footer>
-    );
-  }
+  );
+}
+
+
 
 function Body() {
     return (
-        <div>
+        
+          <body className="test-page">
             <h1>Personality Quiz</h1>
             <form id="quiz">
                 {DATA.map((question) => {
                     return <CreateQuestion question={question} />
                 })}
             </form>
-        </div>
+            
+          </body>
     )
 }

@@ -62,7 +62,7 @@ function Header() {
   }
 
 
-const Footer = () => {
+function Footer (){
     return (
         <footer className="footer footer__user">
             <div className="container">
