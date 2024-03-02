@@ -22,7 +22,7 @@ function Card(props) {
 
 function Main() {
   return (
-    <main>
+    <main className="main-page">
       <section className="about">
         <h1 id="title">ZEN</h1>
       </section>
