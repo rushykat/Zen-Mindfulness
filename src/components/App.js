@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import logo from "../img/logo.png";
 import card1 from "../img/cards-img1.png";
 import card2 from "../img/cards-img2.png";
 import card3 from "../img/cards-img3.png";
@@ -8,39 +7,8 @@ import card4 from "../img/cards-img4.png";
 import LoginPage from "./Login";
 import UserPage from "./User";
 import TestPage from "./Test";
-
-function Header() {
-  return (
-    <header className="header">
-      <div className="container">
-        <div className="header__wrapper">
-          <div>
-            <Link to="/">
-              <img className="header__logo" src={logo} alt="" />
-            </Link>
-          </div>
-          <ul className="header__list">
-            <li>
-              <Link className="header__item" to="/test">
-                Personality Test
-              </Link>
-            </li>
-            <li>
-              <Link className="header__item" to="/user">
-                Personal Stats
-              </Link>
-            </li>
-            <li>
-              <Link className="header__item" to="/login">
-                Log in
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
-  );
-}
+import Header from "./Header";
+import Footer from "./Footer";
 
 function Card(props) {
   return (
@@ -83,16 +51,6 @@ function Main() {
         </div>
       </section>
     </main>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="footer">
-      <div className="container">
-        <p>&copy; 2024 Zen Mental Health App Group 10</p>
-      </div>
-    </footer>
   );
 }
 
