@@ -1,7 +1,8 @@
-import React from "react";
 import logo from "../img/logo.png";
 import DATA from '../Data/data.json';
 import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import success from '../img/success.png';
 
 
 export default function TestPage() {
@@ -60,20 +61,29 @@ function Footer (){
 
 
 function Body() {
-    return (
-        
-          <body className="test-page">
-            <h1>Personality Quiz</h1>
-            <form id="quiz">
-                {DATA.map((question) => {
-                    return <CreateQuestion question={question} />
-                })}
-                <input type="submit" value="Submit" />
+  const [showImage, setShowImage] = useState(false);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setShowImage(true);
+  }
 
-            </form>
-            
-          </body>
-    )
+  return (
+    <body className="test-page">
+        <h1>Personality Quiz</h1>
+        <form id="quiz" onSubmit={handleSubmit}>
+            {DATA.map((question) => {
+                return <CreateQuestion question={question} />
+            })}
+            <input type="submit" value="Submit" />
+        </form>
+        {showImage && (
+          <div style={{position: 'absolute', top: '300px', right: '300px'}}>
+            <img src={success} alt="Success!" style={{width: '150px', height: '150px'}} />
+            <p>Form submitted successfully!</p>
+          </div>
+        )}               
+        </body>
+  )
 }
 
 function CreateQuestion({question}) {
