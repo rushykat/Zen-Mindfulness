@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import logo from "../img/logo.png";
 import card1 from "../img/cards-img1.png";
 import card2 from "../img/cards-img2.png";
@@ -15,25 +15,25 @@ function Header() {
       <div className="container">
         <div className="header__wrapper">
           <div>
-            <a href="/">
+            <Link to="/">
               <img className="header__logo" src={logo} alt="" />
-            </a>
+            </Link>
           </div>
           <ul className="header__list">
             <li>
-              <a className="header__item" href="/test">
+              <Link className="header__item" to="/test">
                 Personality Test
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="header__item" href="/user">
+              <Link className="header__item" to="/user">
                 Personal Stats
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="header__item" href="/login">
+              <Link className="header__item" to="/login">
                 Log in
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -98,19 +98,15 @@ function Footer() {
 
 export default function App() {
   return (
-    <>
+    <Router>
       <Header />
-      <Main />
-      <Footer />
-      {/*
-      these don't work yet idk
       <Routes>
-        <Route path="test" element={<Test />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="user" element={<User />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/test" element={<TestPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/user" element={<UserPage />} />
       </Routes>
-
-    */}
-    </>
+      
+    </Router>
   );
 }
