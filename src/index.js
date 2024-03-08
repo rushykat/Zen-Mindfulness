@@ -1,9 +1,11 @@
-import React from "react";
+
 import ReactDOM from "react-dom";
 import "./style.css";
 import App from "./components/App";
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set} from 'firebase/database';
+import { getDatabase, ref, set, remove, onValue} from 'firebase/database';
+import React, { useState, useEffect } from 'react';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyD8FGnwTT3_eY8odr_3WTk_-k8KeThxSAs",
@@ -28,7 +30,21 @@ function writeUserData(userId, name, email, imageUrl) {
     });
 }
 
-writeUserData('1', 'name', 'email', 'imageUrl');
+function deleteUserData(userId) {
+  const database = getDatabase();
+  const userRef = ref(database, 'users/' + userId);
+  remove(userRef);
+}
+
+
+
+
+
+writeUserData('3', 'name', 'email@uw.edu', 'imageUrl');
+deleteUserData('3');
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
