@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DATA from "../Data/data.json";
@@ -28,6 +28,7 @@ export default function TestPage() {
   return (
     <React.Fragment>
       <Header />
+      <ToastContainer />
       {submitted ? (
         <Navigate to="/thank-you" />
       ) : (
@@ -80,7 +81,7 @@ function CreateQuestion({
           checked={selectedOption === "A"}
           onChange={() => handleAnswerChange(index, "A")}
         />
-        <label htmlFor={`${question.name}${index}A`}>{question.A}</label>
+        <label for={`${question.name}${index}A`}>{question.A}</label>
       </div>
       <div>
         <input
@@ -91,7 +92,7 @@ function CreateQuestion({
           checked={selectedOption === "B"}
           onChange={() => handleAnswerChange(index, "B")}
         />
-        <label htmlFor={`${question.name}${index}B`}>{question.B}</label>
+        <label for={`${question.name}${index}B`}>{question.B}</label>
       </div>
       <div>
         <input
@@ -102,7 +103,7 @@ function CreateQuestion({
           checked={selectedOption === "C"}
           onChange={() => handleAnswerChange(index, "C")}
         />
-        <label htmlFor={`${question.name}${index}C`}>{question.C}</label>
+        <label for={`${question.name}${index}C`}>{question.C}</label>
       </div>
     </div>
   );
