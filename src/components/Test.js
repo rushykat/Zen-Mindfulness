@@ -1,54 +1,109 @@
-import React, { useState } from 'react';
-import DATA from '../Data/data.json';
+import React, { useState } from "react";
+import { Navigate, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import DATA from "../Data/data.json";
 import Header from "./Header";
 import Footer from "./Footer";
-import success from '../img/success.png';
-
 
 export default function TestPage() {
-    return (
-        <React.Fragment>
-            <Header />
-            <Body />
-            <Footer />
-        </React.Fragment>
-    )
-}
+  const [answers, setAnswers] = useState(Array(DATA.length).fill(null));
+  const [submitted, setSubmitted] = useState(false);
 
-
-function Body() {
-  const [showImage, setShowImage] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
-    setShowImage(true);
-  }
+    if (answers.every((answer) => answer !== null)) {
+      setSubmitted(true);
+    } else {
+      toast.error("Please answer all questions!");
+    }
+  };
+
+  const handleAnswerChange = (index, selectedOption) => {
+    const newAnswers = [...answers];
+    newAnswers[index] = selectedOption;
+    setAnswers(newAnswers);
+  };
 
   return (
-    <body className="test-page">
-        <h1>Personality Quiz</h1>
-        <form id="quiz" onSubmit={handleSubmit}>
-            {DATA.map((question) => {
-                return <CreateQuestion question={question} />
-            })}
-            <input type="submit" value="Submit" />
-        </form>
-        {showImage && (
-          <div style={{position: 'absolute', top: '300px', right: '300px'}}>
-            <img src={success} alt="Success!" style={{width: '150px', height: '150px'}} />
-            <p>Form submitted successfully!</p>
-          </div>
-        )}               
-        </body>
-  )
+    <React.Fragment>
+      <Header />
+      {submitted ? (
+        <Navigate to="/thank-you" />
+      ) : (
+        <Body
+          handleSubmit={handleSubmit}
+          handleAnswerChange={handleAnswerChange}
+          answers={answers}
+        />
+      )}
+      <Footer />
+    </React.Fragment>
+  );
 }
 
-function CreateQuestion({question}) {
-    return (
-        <div className="question">
-            <h2>{question.Question}</h2>
-            <input type="radio" name={question.name} value="A" id="${question.name}A" /><label for="${question.name}A">{question.A}</label><br />
-            <input type="radio" name={question.name} value="B" id="${question.name}B" /><label for="${question.name}B">{question.B}</label><br />
-            <input type="radio" name={question.name} value="C" id="${question.name}C" /><label for="${question.name}C">{question.C}</label><br />
-        </div>
-    )
+function Body({ handleSubmit, handleAnswerChange, answers }) {
+  return (
+    <body className="test-page">
+      <h1>Personality Quiz</h1>
+      <form id="quiz" onSubmit={handleSubmit}>
+        {DATA.map((question, index) => (
+          <CreateQuestion
+            key={index}
+            question={question}
+            index={index}
+            handleAnswerChange={handleAnswerChange}
+            selectedOption={answers[index]}
+          />
+        ))}
+        <input type="submit" value="Submit" />
+      </form>
+    </body>
+  );
+}
+
+function CreateQuestion({
+  question,
+  index,
+  handleAnswerChange,
+  selectedOption,
+}) {
+  return (
+    <div className="question">
+      <h2>{question.Question}</h2>
+      <div>
+        <input
+          type="radio"
+          id={`${question.name}${index}A`}
+          name={`${question.name}${index}`}
+          value="A"
+          checked={selectedOption === "A"}
+          onChange={() => handleAnswerChange(index, "A")}
+        />
+        <label htmlFor={`${question.name}${index}A`}>{question.A}</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id={`${question.name}${index}B`}
+          name={`${question.name}${index}`}
+          value="B"
+          checked={selectedOption === "B"}
+          onChange={() => handleAnswerChange(index, "B")}
+        />
+        <label htmlFor={`${question.name}${index}B`}>{question.B}</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id={`${question.name}${index}C`}
+          name={`${question.name}${index}`}
+          value="C"
+          checked={selectedOption === "C"}
+          onChange={() => handleAnswerChange(index, "C")}
+        />
+        <label htmlFor={`${question.name}${index}C`}>{question.C}</label>
+      </div>
+    </div>
+  );
 }

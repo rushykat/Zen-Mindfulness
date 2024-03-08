@@ -9,6 +9,7 @@ import UserPage from "./User";
 import TestPage from "./Test";
 import Header from "./Header";
 import Footer from "./Footer";
+import ThankYouPage from "./ThankYou";
 
 function Card(props) {
   return (
@@ -62,6 +63,7 @@ export default function App() {
         <Route path="/test" element={<TestPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/user" element={<UserPage />} />
+        <Route path="/thank-you" element={<ThankYouPage />} />
       </Routes>
     </Router>
   );
