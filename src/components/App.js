@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import card1 from "../img/cards-img1.png";
 import card2 from "../img/cards-img2.png";
 import card3 from "../img/cards-img3.png";
@@ -56,14 +58,42 @@ function Main() {
 }
 
 export default function App() {
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  console.log(userLoggedIn + " 1");
+
+  const handleUserLoggedIn = () => {
+    setUserLoggedIn(true);
+  };
+
+  useEffect(() => {
+    if (userLoggedIn) {
+      toast.success("Successfully signed in!");
+    }
+  }, [userLoggedIn]);
+
+  console.log(userLoggedIn + " 2");
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<><Header /><Main /><Footer /></>} />
         <Route path="/test" element={<TestPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/login"
+          element={<LoginPage handleUserLoggedIn={handleUserLoggedIn} />}
+        />
         <Route path="/user" element={<UserPage />} />
         <Route path="/thank-you" element={<ThankYouPage />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+              <ToastContainer />
+              <Main />
+              <Footer />
+            </>
+          }
+        />
       </Routes>
     </Router>
   );

@@ -1,11 +1,9 @@
-
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import "./style.css";
 import App from "./components/App";
-import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, get, remove, onValue} from 'firebase/database';
-import React, { useState, useEffect } from 'react';
-
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set, get, remove, onValue } from "firebase/database";
+import React, { useState, useEffect } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD8FGnwTT3_eY8odr_3WTk_-k8KeThxSAs",
@@ -15,26 +13,26 @@ const firebaseConfig = {
   storageBucket: "zen-mindfulness.appspot.com",
   messagingSenderId: "235986562941",
   appId: "1:235986562941:web:348215aa1223b8ef35e614",
-  measurementId: "G-0RC1TR2DJP"
+  measurementId: "G-0RC1TR2DJP",
 };
 
 const app = initializeApp(firebaseConfig);
 
 function writeUserData(userId, name, email, imageUrl) {
   const database = getDatabase();
-  const reference = ref(database, 'users/' + userId);
+  const reference = ref(database, "users/" + userId);
   set(reference, {
-      username: name,
-      email: email,
-      profile_picture : imageUrl
-    });
+    username: name,
+    email: email,
+    profile_picture: imageUrl,
+  });
 }
 
 function writePersonalityTypes(Id, personalityTypes) {
   const database = getDatabase();
-  const reference = ref(database, 'personality/' + Id);
+  const reference = ref(database, "personality/" + Id);
   set(reference, {
-    personality_types: personalityTypes 
+    personality_types: personalityTypes,
   });
 }
 
@@ -55,11 +53,9 @@ function writePersonalityTypes(Id, personalityTypes) {
 // writePersonalityTypes('15', 'INTP');
 // writePersonalityTypes('16', 'INFP');
 
-
-
 function deleteUserData(userId) {
   const database = getDatabase();
-  const userRef = ref(database, 'users/' + userId);
+  const userRef = ref(database, "users/" + userId);
   remove(userRef);
 }
 
@@ -80,13 +76,8 @@ function readAndLogData(path) {
     });
 }
 
-
-
 // writeUserData('3', 'name', 'email@uw.edu', 'imageUrl');
 // deleteUserData('3');
-
-
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
