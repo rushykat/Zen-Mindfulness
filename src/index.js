@@ -34,26 +34,26 @@ function writePersonalityTypes(Id, personalityTypes) {
   const database = getDatabase();
   const reference = ref(database, 'personality/' + Id);
   set(reference, {
-    personality_types: personalityTypes // set the personality types array
+    personality_types: personalityTypes 
   });
 }
 
-writePersonalityTypes('1', 'ESTJ');
-writePersonalityTypes('2', 'ENTJ');
-writePersonalityTypes('3', 'ESFJ');
-writePersonalityTypes('4', 'ENFJ');
-writePersonalityTypes('5', 'ISTJ');
-writePersonalityTypes('6', 'ISFJ');
-writePersonalityTypes('7', 'INTJ');
-writePersonalityTypes('8', 'INFJ');
-writePersonalityTypes('9', 'ESTP');
-writePersonalityTypes('10', 'ESFP');
-writePersonalityTypes('11', 'ENTP');
-writePersonalityTypes('12', 'ENFP');
-writePersonalityTypes('13', 'ISTP');
-writePersonalityTypes('14', 'ISFP');
-writePersonalityTypes('15', 'INTP');
-writePersonalityTypes('16', 'INFP');
+// writePersonalityTypes('1', 'ESTJ');
+// writePersonalityTypes('2', 'ENTJ');
+// writePersonalityTypes('3', 'ESFJ');
+// writePersonalityTypes('4', 'ENFJ');
+// writePersonalityTypes('5', 'ISTJ');
+// writePersonalityTypes('6', 'ISFJ');
+// writePersonalityTypes('7', 'INTJ');
+// writePersonalityTypes('8', 'INFJ');
+// writePersonalityTypes('9', 'ESTP');
+// writePersonalityTypes('10', 'ESFP');
+// writePersonalityTypes('11', 'ENTP');
+// writePersonalityTypes('12', 'ENFP');
+// writePersonalityTypes('13', 'ISTP');
+// writePersonalityTypes('14', 'ISFP');
+// writePersonalityTypes('15', 'INTP');
+// writePersonalityTypes('16', 'INFP');
 
 
 

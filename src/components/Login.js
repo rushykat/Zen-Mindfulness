@@ -20,18 +20,16 @@ export default function Login (){
   
     // Check if we're signing up
     if (option === 2) {
-      // Check if passwords match
       if (password !== repeatPassword) {
         alert('Passwords do not match!');
         return;
       }
-  
-      // Write user info to Firebase
+
       const usersRef = ref(db, 'users');
       const newUserRef = push(usersRef);
       set(newUserRef, {
         email: email,
-        password: password, // Note: You should never store passwords in plain text!
+        password: password, 
       });
     } else if (option === 1) { // Check if we're signing in
       const usersRef = ref(db, 'users');
