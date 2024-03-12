@@ -207,9 +207,9 @@ export default function UserPage() {
         </button>
       </td>
       <td>
-        <Link to={`/entry/${item.id}`} className="btn-submit-form"> {/* Add this line */}
+        <Link to={`/entry/${item.id}`} className="btn-submit-form"> 
           View
-        </Link> {/* Add this line */}
+        </Link> 
       </td>
     </tr>
   ))}
