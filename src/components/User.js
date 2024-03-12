@@ -3,6 +3,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Chatbot from "./Chatbot";
 import { getDatabase, ref, set, push, remove, onValue, off } from "firebase/database";
+import { Link } from 'react-router-dom';
+
 
 export default function UserPage() {
   const [entry, setEntry] = useState("");
@@ -173,6 +175,7 @@ export default function UserPage() {
                     <th>Time</th>
                     <th>Edit</th>
                     <th>Delete</th>
+                    <th>View</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -196,6 +199,11 @@ export default function UserPage() {
         >
           Delete
         </button>
+      </td>
+      <td>
+        <Link to={`/entry/${item.id}`} className="btn-submit-form"> {/* Add this line */}
+          View
+        </Link> {/* Add this line */}
       </td>
     </tr>
   ))}
