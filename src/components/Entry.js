@@ -55,7 +55,8 @@ export default function EntryPage() {
   // ...
 
   return (
-    <table className='journal__table'>
+    <div className='entry_card'>
+    <table className='entry__table'>
       <thead>
         <tr>
           <th>Reflection</th>
@@ -73,5 +74,6 @@ export default function EntryPage() {
         </tr>
       </tbody>
     </table>
+    </div>
   );
 }

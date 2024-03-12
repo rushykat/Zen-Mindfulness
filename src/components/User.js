@@ -175,7 +175,7 @@ export default function UserPage() {
                     <th>Time</th>
                     <th>Edit</th>
                     <th>Delete</th>
-                    <th>View</th>
+                    <th>Entry</th>
                   </tr>
                 </thead>
                 <tbody>
