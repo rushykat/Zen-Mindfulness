@@ -1,14 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Chatbot from "./Chatbot";
+import { getDatabase, ref, set, push, remove, onValue, off } from "firebase/database";
 
 export default function UserPage() {
   const [entry, setEntry] = useState("");
   const [category, setCategory] = useState("Personal");
-  const [attachment, setAttachment] = useState(null);
   const [entries, setEntries] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
+
+
+  const db = getDatabase();
+
+  useEffect(() => {
+    const entriesRef = ref(db, 'entries');
+    const listener = onValue(entriesRef, (snapshot) => {
+      const data = snapshot.val();
+      const list = data ? Object.keys(data).map(key => ({ ...data[key], id: key })) : [];
+      setEntries(list);
+    });
+
+    return () => {
+      off(entriesRef, listener);
+    };
+  }, []);
 
   const handleInputChange = (e) => {
     setEntry(e.target.value);
@@ -18,57 +34,36 @@ export default function UserPage() {
     setCategory(e.target.value);
   };
 
-  const handleAttachmentChange = (e) => {
-    const file = e.target.files[0];
-    setAttachment(file);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (entry.trim() !== "") {
-      if (editIndex !== null) {
-        const updatedEntries = [...entries];
-        updatedEntries[editIndex].text = entry;
-        updatedEntries[editIndex].category = category;
-        updatedEntries[editIndex].attachment = attachment;
-        setEntries(updatedEntries);
-        setEditIndex(null);
-      } else {
-        const newEntry = {
-          text: entry,
-          timestamp: new Date().toLocaleString(),
-          category: category,
-          attachment: attachment,
-        };
-        setEntries([...entries, newEntry]);
-      }
+      const newEntry = {
+        text: entry,
+        timestamp: new Date().toLocaleString(),
+        category: category,
+      };
+      const entriesRef = ref(db, 'entries');
+      const newEntryRef = push(entriesRef);
+      set(newEntryRef, newEntry);
       setEntry("");
       setCategory("Personal");
-      setAttachment(null);
     }
   };
 
-  const handleDelete = (index) => {
-    const newEntries = [...entries];
-    newEntries.splice(index, 1);
-    setEntries(newEntries);
+  const handleDelete = (entryId) => {
+    const entryRef = ref(db, `entries/${entryId}`);
+    remove(entryRef);
   };
+
 
   const handleEdit = (index) => {
     setEditIndex(index);
     setEntry(entries[index].text);
     setCategory(entries[index].category || "Personal");
-    setAttachment(entries[index].attachment || null);
+
   };
 
-  const handleAddToJournal = (quote) => {
-    const newEntry = {
-      text: quote,
-      timestamp: new Date().toLocaleString(),
-      attachment: null, 
-    };
-    setEntries([...entries, newEntry]);
-  };
+
 
   return (
     <>
@@ -104,17 +99,7 @@ export default function UserPage() {
                 <option value="Family">Family</option>
               </select>
               <br />
-              <label className="journal__label" htmlFor="attachment">
-                <h3 className="journal__subtitle">Attachment:</h3>
-              </label>
-              <input
-              className="journal__attachment"
-                type="file"
-                id="attachment"
-                accept="image/*, application/pdf" 
-                onChange={handleAttachmentChange}
-              />
-              <br />
+              
               <button className="journal__button btn-submit-form" type="submit">
                 {editIndex !== null ? "Update Entry" : "Add Entry"}
               </button>
@@ -126,7 +111,6 @@ export default function UserPage() {
                   <tr>
                     <th>Reflection</th>
                     <th>Category</th>
-                    <th>Attachment</th>
                     <th>Time</th>
                     <th>Edit</th>
                     <th>Delete</th>
@@ -137,7 +121,7 @@ export default function UserPage() {
                     <tr key={index}>
                       <td>{item.text}</td>
                       <td>{item.category || "Personal"}</td>
-                      <td>{item.attachment ? item.attachment.name : "None"}</td>
+
                       <td>{item.timestamp}</td>
                       <td>
                         <button
@@ -148,12 +132,12 @@ export default function UserPage() {
                         </button>
                       </td>
                       <td>
-                        <button
-                          className="btn-submit-form"
-                          onClick={() => handleDelete(index)}
-                        >
-                          Delete
-                        </button>
+                      <button
+                        className="btn-submit-form"
+                        onClick={() => handleDelete(item.id)}
+                      >
+                        Delete
+                      </button>
                       </td>
                     </tr>
                   ))}
