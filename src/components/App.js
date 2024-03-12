@@ -13,6 +13,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ThankYouPage from "./ThankYou";
 
+import Notification from "./Notif";
+
 function Card(props) {
   return (
     <div className="card">
@@ -59,19 +61,11 @@ function Main() {
 
 export default function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
-  console.log(userLoggedIn + " 1");
+  // console.log(userLoggedIn + " 1");
 
   const handleUserLoggedIn = () => {
     setUserLoggedIn(true);
   };
-
-  useEffect(() => {
-    if (userLoggedIn) {
-      toast.success("Successfully signed in!");
-    }
-  }, [userLoggedIn]);
-
-  console.log(userLoggedIn + " 2");
 
   return (
     <Router>
@@ -88,6 +82,7 @@ export default function App() {
           element={
             <>
               <Header />
+              <Notification userLoggedIn={userLoggedIn} />
               <ToastContainer />
               <Main />
               <Footer />
