@@ -82,7 +82,7 @@ function readAndLogData(path) {
 
 
 
-writeUserData('3', 'name', 'email@uw.edu', 'imageUrl');
+// writeUserData('3', 'name', 'email@uw.edu', 'imageUrl');
 // deleteUserData('3');
 
 
