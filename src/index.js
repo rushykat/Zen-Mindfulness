@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./style.css";
 import App from "./components/App";
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, remove, onValue} from 'firebase/database';
+import { getDatabase, ref, set, get, remove, onValue} from 'firebase/database';
 import React, { useState, useEffect } from 'react';
 
 
@@ -36,7 +36,22 @@ function deleteUserData(userId) {
   remove(userRef);
 }
 
+function readAndLogData(path) {
+  const database = getDatabase();
+  const dataRef = ref(database, path);
 
+  get(dataRef)
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
 
 
