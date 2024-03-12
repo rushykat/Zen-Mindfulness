@@ -234,7 +234,10 @@ footer {
 }
 
 
-
+.personality-type {
+    font-weight: bold;
+    font-size: 2em;
+  }
 
 .test-page {
     font-family: Arial, sans-serif;
