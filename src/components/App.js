@@ -13,6 +13,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import EntryPage from "./Entry";
 import ThankYouPage from "./ThankYou";
+import Notification from "./Notif";
 
 function Card(props) {
   return (
@@ -60,19 +61,10 @@ function Main() {
 
 export default function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
-  console.log(userLoggedIn + " 1");
 
   const handleUserLoggedIn = () => {
     setUserLoggedIn(true);
   };
-
-  useEffect(() => {
-    if (userLoggedIn) {
-      toast.success("Successfully signed in!");
-    }
-  }, [userLoggedIn]);
-
-  console.log(userLoggedIn + " 2");
 
   return (
     <Router>
@@ -89,13 +81,14 @@ export default function App() {
           element={
             <>
               <Header />
+              <Notification userLoggedIn={userLoggedIn} />
               <ToastContainer />
               <Main />
               <Footer />
             </>
           }
         />
-        <Route path="/entry/:entryId" element={<EntryPage />} /> {/* Add this line */}
+        <Route path="/entry/:entryId" element={<EntryPage />} />
       </Routes>
     </Router>
   );
