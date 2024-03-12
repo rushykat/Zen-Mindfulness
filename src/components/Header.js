@@ -20,7 +20,7 @@ export default function Header() {
               </li>
               <li>
                 <Link className="header__item" to="/user">
-                  Personal Stats
+                  Journal
                 </Link>
               </li>
               <li>
