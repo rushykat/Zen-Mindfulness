@@ -19,9 +19,9 @@ export default function Login({ handleUserLoggedIn }) {
 
   const handleFormSubmit = async (evt) => {
     evt.preventDefault();
-
+  
     const db = getDatabase();
-
+  
     // Check if we're signing up
     if (option === 2) {
       if (password !== repeatPassword) {
@@ -33,6 +33,9 @@ export default function Login({ handleUserLoggedIn }) {
       set(newUserRef, {
         email: email,
         password: password,
+      })
+      .catch((error) => {
+        console.error("Error writing data: ", error);
       });
       setUserLoggedIn(true);
     } else if (option === 1) {
@@ -40,7 +43,7 @@ export default function Login({ handleUserLoggedIn }) {
       const usersRef = ref(db, "users");
       const snapshot = await get(usersRef);
       const users = snapshot.val();
-
+  
       for (let userId in users) {
         if (
           users[userId].email === email &&
@@ -50,7 +53,7 @@ export default function Login({ handleUserLoggedIn }) {
           return <Navigate to="/" />;
         }
       }
-
+  
       toast.error("Invalid email or password!");
     }
   };

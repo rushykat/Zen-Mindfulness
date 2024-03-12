@@ -14,13 +14,13 @@ export default function ThankYouPage() {
 
     const readAndLogData = () => {
       const database = getDatabase();
-      const randomPersonality = Math.floor(Math.random() * 4) + 1; // generate a random number between 1 and 4
+      const randomPersonality = Math.floor(Math.random() * 4) + 1; 
       const dataRef = ref(database, 'personality/' + randomPersonality);
     
       get(dataRef)
         .then((snapshot) => {
           if (snapshot.exists()) {
-            setData(snapshot.val().personality_types); // store the personality type in state
+            setData(snapshot.val().personality_types); 
           } else {
             console.log("No data available");
           }

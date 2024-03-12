@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import card1 from "../img/cards-img1.png";
 import card2 from "../img/cards-img2.png";

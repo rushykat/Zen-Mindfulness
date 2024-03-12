@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Chatbot from "./Chatbot";
@@ -63,6 +63,9 @@ export default function UserPage() {
             text: entry,
             timestamp: new Date().toLocaleString(),
             category: category,
+          })
+          .catch((error) => {
+            console.error("Error writing data: ", error);
           });
           setEditIndex(null);
           setLoading(false);
@@ -75,7 +78,10 @@ export default function UserPage() {
         };
         const entriesRef = ref(db, 'entries');
         setTimeout(() => {
-          push(entriesRef, newEntry);
+          push(entriesRef, newEntry)
+          .catch((error) => {
+            console.error("Error writing data: ", error);
+          });
           setLoading(false);
         }, 1000);
       }

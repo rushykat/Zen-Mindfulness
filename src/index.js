@@ -2,8 +2,8 @@ import ReactDOM from "react-dom/client";
 import "./style.css";
 import App from "./components/App";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, get, remove, onValue } from "firebase/database";
-import React, { useState, useEffect } from "react";
+import { getDatabase, ref, set, get, remove } from "firebase/database";
+import React  from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD8FGnwTT3_eY8odr_3WTk_-k8KeThxSAs",
@@ -16,17 +16,9 @@ const firebaseConfig = {
   measurementId: "G-0RC1TR2DJP",
 };
 
-const app = initializeApp(firebaseConfig);
 
-function writeUserData(userId, name, email, imageUrl) {
-  const database = getDatabase();
-  const reference = ref(database, "users/" + userId);
-  set(reference, {
-    username: name,
-    email: email,
-    profile_picture: imageUrl,
-  });
-}
+
+
 
 function writePersonalityTypes(Id, personalityTypes) {
   const database = getDatabase();
