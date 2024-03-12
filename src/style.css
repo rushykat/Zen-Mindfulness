@@ -700,6 +700,10 @@ footer {
     color: #6381e8;
 }
 
-
-
-  
+.notFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+}

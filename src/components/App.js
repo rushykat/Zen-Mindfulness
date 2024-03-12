@@ -14,6 +14,7 @@ import Footer from "./Footer";
 import EntryPage from "./Entry";
 import ThankYouPage from "./ThankYou";
 import Notification from "./Notif";
+import NotFound from "./NotFound";
 
 function Card(props) {
   return (
@@ -89,6 +90,7 @@ export default function App() {
           }
         />
         <Route path="/entry/:entryId" element={<EntryPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
