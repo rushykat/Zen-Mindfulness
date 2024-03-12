@@ -55,19 +55,23 @@ export default function EntryPage() {
   // ...
 
   return (
-    <div>
-      <h2>{entry.text}</h2>
-      <p>{entry.category || "Personal"}</p>
-      <p>{formatDate(entry.timestamp)}</p>
-      <Link to={`/edit/${entry.id}`} className="btn-submit-form">
-        Edit
-      </Link>
-      <button
-        className="btn-submit-form"
-        onClick={() => handleDelete(entry.id)}
-      >
-        Delete
-      </button>
-    </div>
+    <table className='journal__table'>
+      <thead>
+        <tr>
+          <th>Reflection</th>
+          <th>Category</th>
+          <th>Time</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{entry.text}</td>
+          <td>{entry.category || "Personal"}</td>
+          <td>{formatDate(entry.timestamp)}</td>
+
+        </tr>
+      </tbody>
+    </table>
   );
 }
