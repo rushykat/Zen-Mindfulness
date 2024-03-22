@@ -4,5 +4,6 @@ This repository contains code for an interactive information web app, created fo
 
 Group members:
 Collin Shen
+Rushi Katabathuni
 Mykyta Lepikash
 Ben Leland
